@@ -6,51 +6,45 @@ from streamlit_folium import st_folium
 import tensorflow as tf
 import numpy as np
 
-
-st.set_page_config(page_title="Souk Guardian 2030", page_icon="Shield", layout="centered")
+# ========================= PAGE =========================
+st.set_page_config(page_title="Souk Guardian 2030", page_icon="Morocco", layout="centered")
 
 st.markdown("""
 <style>
-    /* Beautiful zellige background */
     .stApp {
-        background: url('https://i.imgur.com/8Qz1L0Z.jpg') no-repeat center center fixed;
-        background-size: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.55)),
-                    url('https://i.imgur.com/8Qz1L0Z.jpg') no-repeat center center fixed;
+        background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)),
+                    url('https://images.unsplash.com/photo-1559925523-10de9e23cf90?w=1920&q=85')
+                    no-repeat center center fixed;
         background-size: cover;
     }
-    
-    /* White card effect so text stays readable */
     .main > div {
-        background: rgba(255, 255, 255, 0.94);
+        background: rgba(255,255,255,0.96);
         border-radius: 25px;
-        padding: 2.5rem;
-        box-shadow: 0 15px 40px rgba(0,0,0,0.25);
-        backdrop-filter: blur(8px);
+        padding: 2rem 3rem;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        max-width: 900px;
+        margin: 2rem auto;
     }
-    
-    /* Title in Moroccan colours */
     h1 {
-        font-size: 4rem !important;
+        text-align: center;
+        font-size: 4rem;
         background: linear-gradient(90deg, #C8102E, #006400);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        text-align: center;
         font-weight: 900;
-        margin-bottom: 0.5rem;
+        margin: 1rem 0;
     }
-    
-    .tagline {
+    .tag {
         text-align: center;
         font-size: 1.7rem;
-        color: #1e3a2b;
-        margin: 1.5rem 0 3rem 0;
-        font-weight: 600;
+        color: #222;
+        margin: 2rem 0;
     }
 </style>
 """, unsafe_allow_html=True)
-# ========================= PAGE =========================
-st.title("Souk Guardian 2030")
-st.markdown("**Photo → prix → arrête les arnaques**")
+
+st.markdown("<h1>SOUK GUARDIAN 2030</h1>", unsafe_allow_html=True)
+st.markdown("<div class='tag'>Prends une photo → Découvre le prix juste → Négocie comme un Marocain</div>", unsafe_allow_html=True)
 
 # ========================= DATA =========================
 data = {
