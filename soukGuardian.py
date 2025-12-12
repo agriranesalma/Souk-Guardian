@@ -12,38 +12,39 @@ st.set_page_config(page_title="Souk Guardian 2030", page_icon="Morocco", layout=
 st.markdown("""
 <style>
     .stApp {
-        background: linear-gradient(rgba(0,0,0,0.50), rgba(0,0,0,0.60)),
+        background: linear-gradient(rgba(0,0,0,0.52), rgba(0,0,0,0.62)),
                     url('https://images.unsplash.com/photo-1559925523-10de9e23cf90?w=1920&q=85')
                     no-repeat center center fixed;
         background-size: cover;
     }
-    .main > div {
-        background: rgba(255,255,255,0.97);
-        border-radius: 28px;
-        padding: 3rem;
-        box-shadow: 0 20px 50px rgba(0,0,0,0,3);
-        max-width: 950px;
-        margin: 2rem auto;
-    }
+
+   
     h1 {
-        font-size: 8rem ;
+        font-size: 8.5rem;      
         font-weight: 900;
         text-align: center;
-        background: linear-gradient(90deg, #C8102E 0%, #C8102E 50%, #006400 50%, #006400 100%);
+        background: linear-gradient(90deg,
+            #e31e24 0%,
+            #e31e24 38%,
+            #ffffff 50%,   
+            #006400 62%,
+            #006400 100%
+        );
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        text-shadow: 0 0 30px rgba(0,0,0,0.7);
-        letter-spacing: 6px;
-        margin: 2.5rem 0 1rem 0;
+        text-shadow: 0 0 50px rgba(0,0,0,0.8);
+        letter-spacing: 12px;
+        margin: 3rem 0 1.5rem 0;
+        line-height: 1.1;
     }
 
     .tag {
-        font-size: 2.5rem ;
+        font-size: 2.7rem ;
         font-weight: 700;
         text-align: center;
         color: #ffffff ;
-        text-shadow: 0 0 20px rgba(0,0,0,0.8);
-        margin: 1rem 0 4rem 0;
+        text-shadow: 0 0 30px rgba(0,0,0,0.9);
+        margin: 1rem 0 5rem 0;
     }
 </style>
 """, unsafe_allow_html=True)
