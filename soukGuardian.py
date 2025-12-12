@@ -26,9 +26,9 @@ st.markdown("""
         background: linear-gradient(90deg,
             #e31e24 0%,
             #e31e24 38%,
-            #ffffff 30%,   
+            #ffffff 20%,   
             #006400 62%,
-            #006400 100%
+            #006400 70%
         );
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
