@@ -26,8 +26,8 @@ st.markdown("""
         margin: 2rem auto;
     }
     h1 {
-        font-size: 6.2rem ;
-        font-weight: 1300;
+        font-size: 8rem ;
+        font-weight: 900;
         text-align: center;
         background: linear-gradient(90deg, #C8102E 0%, #C8102E 50%, #006400 50%, #006400 100%);
         -webkit-background-clip: text;
@@ -38,7 +38,7 @@ st.markdown("""
     }
 
     .tag {
-        font-size: 2.5rem !important;
+        font-size: 2.5rem ;
         font-weight: 700;
         text-align: center;
         color: #ffffff ;
