@@ -20,7 +20,7 @@ st.markdown("""
 
    
     h1 {
-        font-size: 8.5rem;      
+        font-size: 14rem;      
         font-weight: 900;
         text-align: center;
         background: linear-gradient(90deg,
@@ -39,7 +39,7 @@ st.markdown("""
     }
 
     .tag {
-        font-size: 2.7rem ;
+        font-size: 2rem ;
         font-weight: 700;
         text-align: center;
         color: #ffffff ;
