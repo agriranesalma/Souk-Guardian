@@ -171,9 +171,9 @@ st.markdown("---")
 st.subheader("Zones à Casablanca")
 m = folium.Map(location=[33.5731, -7.5898], zoom_start=12, tiles="cartodbpositron")
 folium.CircleMarker([33.595, -7.618], radius=40, color="#e74c3c", fill=True,
-                    popup="Zone touristique – prix gonflés", tooltip="Médina").add_to(m)
+                    popup="Prix gonflés", tooltip="Médina").add_to(m)
 folium.CircleMarker([33.570, -7.585], radius=35, color="#2ecc71", fill=True,
                     popup="Bons vendeurs", tooltip="Derb Ghallef").add_to(m)
-st_folium(m, width=700, height=400)
+st_folium(m, width=700, height=400, key="permanent_map")
 
 st.caption("Souk Guardian 2030 – Ton bouclier anti-arnaque")
