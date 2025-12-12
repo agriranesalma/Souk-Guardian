@@ -6,8 +6,49 @@ from streamlit_folium import st_folium
 import tensorflow as tf
 import numpy as np
 
+
+st.set_page_config(page_title="Souk Guardian 2030", page_icon="Shield", layout="centered")
+
+st.markdown("""
+<style>
+    /* Beautiful zellige background */
+    .stApp {
+        background: url('https://i.imgur.com/8Qz1L0Z.jpg') no-repeat center center fixed;
+        background-size: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.55)),
+                    url('https://i.imgur.com/8Qz1L0Z.jpg') no-repeat center center fixed;
+        background-size: cover;
+    }
+    
+    /* White card effect so text stays readable */
+    .main > div {
+        background: rgba(255, 255, 255, 0.94);
+        border-radius: 25px;
+        padding: 2.5rem;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+        backdrop-filter: blur(8px);
+    }
+    
+    /* Title in Moroccan colours */
+    h1 {
+        font-size: 4rem !important;
+        background: linear-gradient(90deg, #C8102E, #006400);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-align: center;
+        font-weight: 900;
+        margin-bottom: 0.5rem;
+    }
+    
+    .tagline {
+        text-align: center;
+        font-size: 1.7rem;
+        color: #1e3a2b;
+        margin: 1.5rem 0 3rem 0;
+        font-weight: 600;
+    }
+</style>
+""", unsafe_allow_html=True)
 # ========================= PAGE =========================
-st.set_page_config(page_title="Souk Guardian 2030", layout="centered")
 st.title("Souk Guardian 2030")
 st.markdown("**Photo → prix → arrête les arnaques**")
 
