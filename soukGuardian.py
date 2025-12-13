@@ -7,7 +7,7 @@ import tensorflow as tf
 import numpy as np
 
 # ========================= PAGE =========================
-st.set_page_config(page_title="Souk Guardian 2030", page_icon="Morocco", layout="centered")
+st.set_page_config(page_title="Souk Guardian 2030", page_icon="🇲🇦", layout="centered")
 
 st.markdown("""
 <style>
