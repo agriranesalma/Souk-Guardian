@@ -14,7 +14,7 @@ st.markdown("""
 <style>
     .stApp {
         background: linear-gradient(rgba(0,0,0,0.68), rgba(0,0,0,0.68)),
-                    url('https://adghaltours.com/wp-content/uploads/2025/06/4-Moroccan-Souk-Guide-Discover-Unique-Finds-in-Marrakech-Adghal-Tours-1024x559.webp')
+                    url('https://images.unsplash.com/photo-1559925523-10de9e23cf90?q=80&w=1064&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')
                     no-repeat center center fixed;
         background-size: cover;
         color: white !important;
@@ -252,7 +252,7 @@ with tab2:
                     st.warning("A bit high – bargain down")
                 else:
                     st.error("OVERPRICED!")
-                    st.info("Say in Darija → This price is for tourists only? Too expensive!")
+                    st.info("Say This → This price is for tourists only? Too expensive!")
 
                 if asked > fair_price:
                     st.success(f"You can save **{asked - fair_price} DH** by bargaining!")
