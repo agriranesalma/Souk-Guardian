@@ -250,7 +250,6 @@ with tab2:
             folium.PolyLine([dep_point, arr_point], color="blue", weight=6).add_to(m_taxi)
     st_folium(m_taxi, width=700, height=400, key="taxi_map")
 
-    if dep_point and arr_point:
 
     # Analysis
     if dep_point and arr_point:
