@@ -219,7 +219,7 @@ with tab2:
     dep_point = st.session_state.taxi_points["depart"]
     arr_point = st.session_state.taxi_points["arrival"]
 
-    center = arr_point or dep_point or (34.0209, -6.8416)
+    center = arr_point or dep_point 
     m_taxi = folium.Map(location=center, zoom_start=13, tiles="cartodbpositron")
     if dep_point:
         folium.Marker(dep_point, tooltip="Departure", icon=folium.Icon(color="red")).add_to(m_taxi)
