@@ -14,7 +14,7 @@ st.markdown("""
 <style>
     .stApp {
         background: linear-gradient(rgba(0,0,0,0.68), rgba(0,0,0,0.68)),
-                    url('https://adghaltours.com/wp-content/uploads/2025/06/4-Moroccan-Souk-Guide-Discover-Unique-Finds-in-Marrakech-Adghal-Tours-1024x559.webp')
+                    url('https://images.unsplash.com/photo-1559925523-10de9e23cf90?q=80&w=1064&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')
                     no-repeat center center fixed;
         background-size: cover;
         color: white !important;
@@ -184,7 +184,9 @@ with tab2:
         "Mega Mall Rabat": (33.9570, -6.8700),
         "Hay Riad District": (34.0000, -6.8200),
         "Sale Medina": (34.0389, -6.8166),
-        "Bab Chellah": (34.0070, -6.8210)
+        "Bab Chellah": (34.0070, -6.8210),
+        "Café Carrion Rabat": (34.0155, -6.8340),
+        "Restaurant Dinarjat": (34.0210, -6.8360)
     }
 
     col1, col2 = st.columns(2)
@@ -199,7 +201,9 @@ with tab2:
             st.session_state.taxi_points["arrival"] = popular_places[arrival]
             st.success(f"Arrival: {arrival}")
 
-    st.warning("🔍 **IMPORTANT TIP for map search**: Always add 'Rabat' or 'Morocco' to your query (ex: 'Rabat Ville train station Rabat') to avoid wrong locations like Kenitra or abroad!")
+    st.warning("🔍 **IMPORTANT**: In the map search bar (top-left), ALWAYS add 'Rabat' or 'Morocco' to your query!\n"
+               "Example: 'train station Rabat' or 'Café de France Rabat'\n"
+               "This ensures correct results in Rabat, avoiding places abroad.")
 
     dep_point = st.session_state.taxi_points["depart"]
     arr_point = st.session_state.taxi_points["arrival"]
@@ -224,10 +228,10 @@ with tab2:
         point = (lat, lon)
         if not dep_point:
             st.session_state.taxi_points["depart"] = point
-            st.success("Departure set by click!")
+            st.success("Departure set by click on map!")
         elif not arr_point:
             st.session_state.taxi_points["arrival"] = point
-            st.success("Arrival set by click!")
+            st.success("Arrival set by click on map!")
         st.rerun()
 
     if dep_point and arr_point:
@@ -266,4 +270,4 @@ with tab2:
             st.rerun()
 
 st.markdown("---")
-st.caption("Bargain Guardian Maroc © 2025 – Your shield against possible overpricing in Rabat's souks and taxis 🇲🇦")
+st.caption("Bargain Guardian Maroc © 2025 – Your shield against overpricing in Rabat's souks and taxis 🇲🇦")
