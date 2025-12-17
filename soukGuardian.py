@@ -161,33 +161,46 @@ with tab2:
         st.session_state.taxi_points = {"depart": None, "arrival": None}
 
     popular_places = {
-        "Rabat-Salé Airport (RBA)": (34.0511, -6.7515),
-        "Rabat Ville Train Station": (34.0135, -6.8322),
-        "Medina of Rabat": (34.0209, -6.8352),
-        "Kasbah of the Udayas": (34.0251, -6.8378),
-        "Hassan Tower": (34.0240, -6.8228),
-        "Chellah": (34.0067, -6.8213),
-        "Bouregreg Marina": (34.0235, -6.8280),
-        "Royal Palace (Dar al-Makhzen)": (34.0158, -6.8431),
-        "Agdal District": (34.0020, -6.8560),
-        "Café de France (Medina)": (34.0205, -6.8350),
-        "Paul Café Rabat": (34.0150, -6.8500),
-        "La Comédie Café": (34.0120, -6.8420),
-        "Café Maure (Kasbah)": (34.0255, -6.8380),
-        "Le Dhow (Bouregreg)": (34.0230, -6.8285),
-        "Villa Mandarine Hotel": (34.0300, -6.8500),
-        "Sofitel Rabat Jardin des Roses": (34.0000, -6.8500),
-        "Tour Hassan Palace Hotel": (34.0220, -6.8250),
-        "Mohammed VI Museum of Modern Art": (34.0180, -6.8350),
-        "Andalusian Gardens": (34.0245, -6.8385),
-        "Rabat Zoo": (33.9500, -6.8900),
-        "Mega Mall Rabat": (33.9570, -6.8700),
-        "Hay Riad District": (34.0000, -6.8200),
-        "Sale Medina": (34.0389, -6.8166),
-        "Bab Chellah": (34.0070, -6.8210),
-        "Café Carrion Rabat": (34.0155, -6.8340),
-        "Restaurant Dinarjat": (34.0210, -6.8360)
-    }
+    "Rabat-Salé Airport (RBA)": (34.0511, -6.7515),
+    "Rabat Ville Train Station": (34.0135, -6.8322),
+    "Rabat Agdal Train Station": (33.9990, -6.8550),
+    "Prince Moulay Abdellah Stadium": (34.0085, -6.8750),
+    "Medina of Rabat": (34.0209, -6.8352),
+    "Kasbah of the Udayas": (34.0251, -6.8378),
+    "Hassan Tower": (34.0240, -6.8228),
+    "Mausoleum of Mohammed V": (34.0238, -6.8225),
+    "Chellah Necropolis": (34.0067, -6.8213),
+    "Bouregreg Marina": (34.0235, -6.8280),
+    "Royal Palace (Dar al-Makhzen)": (34.0158, -6.8431),
+    "Andalusian Gardens": (34.0245, -6.8385),
+    "Mohammed VI Tower": (34.0220, -6.8280),
+    "Agdal District": (34.0020, -6.8560),
+    "Hay Riad District": (34.0000, -6.8200),
+    "Sale Medina": (34.0389, -6.8166),
+    "Mega Mall Rabat": (33.9570, -6.8700),
+    "Arribat Center Mall": (33.9810, -6.8700),
+    "Café de France (Medina)": (34.0205, -6.8350),
+    "Café Maure (Kasbah des Oudayas)": (34.0255, -6.8380),
+    "Paul Café Rabat": (34.0150, -6.8500),
+    "La Comédie Café": (34.0120, -6.8420),
+    "Le Dhow (Bouregreg Marina)": (34.0230, -6.8285),
+    "Café Carrion": (34.0155, -6.8340),
+    "Café Weimar": (34.0140, -6.8350),
+    "Sofitel Rabat Jardin des Roses": (34.0000, -6.8500),
+    "Tour Hassan Palace Hotel": (34.0220, -6.8250),
+    "Villa Mandarine": (34.0300, -6.8500),
+    "Farah Rabat Hotel": (34.0180, -6.8420),
+    "Mohammed VI Museum of Modern Art": (34.0180, -6.8350),
+    "National Library of Morocco": (34.0080, -6.8480),
+    "Rabat Zoo": (33.9500, -6.8900),
+    "Faculty of Medicine Rabat (UM5)": (34.0030, -6.8580),
+    "International University of Rabat (UIR)": (33.9800, -6.7400),
+    "Hôpital Militaire Mohammed V": (34.0120, -6.8280),
+    "Hôpital Cheikh Zaid": (34.0000, -6.8200),
+    "Bab er-Rouah": (34.0150, -6.8380),
+    "Bab Chellah": (34.0070, -6.8210),
+    "Avenue Mohammed VI": (34.0100, -6.8500)
+}
 
     col1, col2 = st.columns(2)
     with col1:
@@ -202,8 +215,7 @@ with tab2:
             st.success(f"Arrival: {arrival}")
 
     st.warning("🔍 **IMPORTANT**: In the map search bar (top-left), ALWAYS add 'Rabat' or 'Morocco' to your query!\n"
-               "Example: 'train station Rabat' or 'Café de France Rabat'\n"
-               "This ensures correct results in Rabat, avoiding places abroad.")
+               "Example: 'train station Rabat' or 'Café de France Rabat")
 
     dep_point = st.session_state.taxi_points["depart"]
     arr_point = st.session_state.taxi_points["arrival"]
