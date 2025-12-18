@@ -100,41 +100,38 @@ with tab1:
         st.subheader("1. Photo")
         photo = st.camera_input("Take a clear photo of the item", key="cam")
 
-with col2:
-    st.subheader("2. Asked Price")
-    price_input = st.text_input("Ex: 450 DH", placeholder="400", key="price_souk")
-    st.subheader("3. Item Type")
-    default_idx = 0
-    photo_to_use = photo or st.session_state.get("photo_souk")
+    with col2:
+        st.subheader("2. Asked Price")
+        price_input = st.text_input("Ex: 450 DH", placeholder="400", key="price_input")
 
-    if photo_to_use:
-        try:
-            name, conf = predict_item(Image.open(photo_to_use))
+        st.subheader("3. Item Type")
+        default_idx = 0
+        photo_to_use = photo or st.session_state.get("photo")
 
-            if conf >= 0.90:
-                # High confidence: show detection and auto-select
-                st.success(f"Detected → **{name}** ({conf:.1%} confidence)")
-                clean_name = " ".join([w for w in name.split() if not w.isdigit()]).strip()
-                match = df[df["item_en"].str.contains(clean_name.split()[0], case=False)]
-                if not match.empty:
-                    default_idx = int(match.index[0])
-                    st.info("Item auto-selected")
+        if photo_to_use:
+            try:
+                name, conf = predict_item(Image.open(photo_to_use))
+
+                if conf >= 0.90:
+                    st.success(f"Detected → **{name}** ({conf:.1%} confidence)")
+                    clean_name = " ".join([w for w in name.split() if not w.isdigit()]).strip()
+                    match = df[df["item_en"].str.contains(clean_name.split()[0], case=False, regex=False)]
+                    if not match.empty:
+                        default_idx = int(match.index[0])
+                        st.info("Item auto-selected")
+                    else:
+                        st.warning("Detected item not in list – choose manually")
                 else:
-                    st.warning("Detected item not in list – choose manually")
-            else:
-                # Low confidence: no auto-select, clear message
+                    st.warning("Photo not clear – please choose item manually")
+            except:
                 st.warning("Photo not clear – please choose item manually")
 
-        except Exception as e:
-            st.warning("Photo not clear – please choose item manually")
-
-    selected_idx = st.selectbox(
-        "Confirm or choose item",
-        options=range(len(df)),
-        index=default_idx,
-        format_func=lambda x: f"{df.iloc[x]['item_en']} – {df.iloc[x]['item_ar']}",
-        key="select_souk"
-    )
+        selected_idx = st.selectbox(
+            "Confirm or choose item",
+            options=range(len(df)),
+            index=default_idx,
+            format_func=lambda x: f"{df.iloc[x]['item_en']} – {df.iloc[x]['item_ar']}"
+        )
 
     if st.button("Check Price!", type="primary"):
         if not price_input or not price_input.isdigit():
@@ -172,6 +169,36 @@ with col2:
             for k in ["analyzed", "price", "item_idx", "photo"]:
                 st.session_state.pop(k, None)
             st.rerun()
+
+    # ========================= EDUCATIONAL SOUK MAP (Option 2) =========================
+    st.markdown("---")
+    st.subheader("Souk Zones – Bargaining Culture in Rabat")
+
+    m_souk = folium.Map(location=[34.0209, -6.8352], zoom_start=14, tiles="cartodbpositron")
+
+    # Blue circle: Main tourist souk – vibrant, bargaining common
+    folium.CircleMarker(
+        location=[34.0209, -6.8352],
+        radius=60,
+        color="#3498db",
+        fill=True,
+        fill_opacity=0.6,
+        popup="Main tourist souk – vibrant atmosphere, lots of choice, bargaining is part of the experience",
+        tooltip="Medina of Rabat"
+    ).add_to(m_souk)
+
+    # Green circle: Local markets – authentic, often fairer prices
+    folium.CircleMarker(
+        location=[34.0389, -6.8166],
+        radius=50,
+        color="#2ecc71",
+        fill=True,
+        fill_opacity=0.6,
+        popup="Local markets – authentic experience, often fairer prices and friendly vendors",
+        tooltip="Sale Medina"
+    ).add_to(m_souk)
+
+    st_folium(m_souk, width=700, height=400, key="souk_map_educational")
 
 # ========================= TAXI TAB =========================
 with tab2:
@@ -248,7 +275,6 @@ with tab2:
     dep_point = st.session_state.taxi_points["depart"]
     arr_point = st.session_state.taxi_points["arrival"]
 
-
     center_coords = arr_point or dep_point or (34.0209, -6.8416)
 
     m_taxi = folium.Map(location=center_coords, zoom_start=13, tiles="cartodbpositron")
@@ -309,4 +335,4 @@ with tab2:
             st.rerun()
 
 st.markdown("---")
-st.caption("Atlas Trust Ally © 2025 – Your shield against possible overpricing in Rabat's souks and taxis 🇲🇦")
+st.caption("Atlas Trust Ally © 2030 – Your shield against possible overpricing in Rabat's souks and taxis 🇲🇦")
