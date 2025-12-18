@@ -108,8 +108,6 @@ with tab1:
         "item_en": [
             "Babouches",
             "Atay cup",
-            "Saffron (20g)",
-            "Leather shoes",
             "Leather bag",
             "Tajine pot",
             "Teapot",
@@ -123,8 +121,6 @@ with tab1:
         "item_ar": [
             "بابوش",
             "كاس أتاي",
-            "زعفران (20غ)",
-            "أحذية جلدية",
             "حقيبة جلدية",
             "طاجين صغير",
             "براد شاي",
