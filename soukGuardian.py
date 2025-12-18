@@ -110,9 +110,9 @@ with col2:
     if photo_to_use:
         try:
             name, conf = predict_item(Image.open(photo_to_use))
-            st.success(f"Detected → **{name}** ({conf:.1%} confidence)")
-
+            
             if conf >= 0.90:  # Changed from 0.70 to 0.90
+                st.success(f"Detected → **{name}** ({conf:.1%} confidence)")
                 clean_name = " ".join([w for w in name.split() if not w.isdigit()]).strip()
                 match = df[df["item_en"].str.contains(clean_name.split()[0], case=False)]
                 if not match.empty:
