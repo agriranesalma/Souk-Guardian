@@ -208,9 +208,7 @@ with tab1:
         tooltip="<div style='font-size: 14px; width: 220px;'><b>Hay Riad District</b><br>Upscale artisan shops and galleries – high-quality crafts, leather goods, and modern Moroccan design in a calm setting.</div>"
     ).add_to(m_souk)
 
-    st_folium(m_souk, width=700, height=400, key="souk_map_positive")
-
-    st_folium(m_souk, width=700, height=400, key="souk_map_educational")
+    st_folium(m_souk, width=700, height=400, key="souk_map")
 
 # ========================= TAXI TAB =========================
 with tab2:
