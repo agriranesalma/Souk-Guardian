@@ -52,7 +52,7 @@ st.markdown("""
 st.markdown("<h1>Atlas Trust Ally</h1>", unsafe_allow_html=True)
 st.markdown("<div class='tag'>Souks + Taxis → Get the Fair Price in Rabat</div>", unsafe_allow_html=True)
 
-tab1, tab2 = st.tabs(["Souk Ally", "Taxi Ally"])
+tab1, tab2 = st.tabs(["Souk   Ally", "Taxi   Ally"])
 
 # ========================= SOUK TAB =========================
 with tab1:
