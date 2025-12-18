@@ -332,7 +332,7 @@ with tab2:
                     st.warning("A bit high – bargain down")
                 else:
                     st.error("OVERPRICED!")
-                    st.info("Say in Darija → This price is for tourists only? Too expensive!")
+                    st.info("Say This → This price is for tourists only? Too expensive!")
 
                 if asked > fair_price:
                     st.success(f"You can save **{asked - fair_price} DH** by bargaining!")
