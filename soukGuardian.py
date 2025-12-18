@@ -110,20 +110,23 @@ with col2:
     if photo_to_use:
         try:
             name, conf = predict_item(Image.open(photo_to_use))
-            
-            if conf >= 0.90:  # Changed from 0.70 to 0.90
+
+            if conf >= 0.90:
+                # High confidence: show detection and auto-select
                 st.success(f"Detected → **{name}** ({conf:.1%} confidence)")
                 clean_name = " ".join([w for w in name.split() if not w.isdigit()]).strip()
                 match = df[df["item_en"].str.contains(clean_name.split()[0], case=False)]
                 if not match.empty:
                     default_idx = int(match.index[0])
-                    st.info("Item auto-selected (high confidence)")
+                    st.info("Item auto-selected")
                 else:
-                    st.warning("Photo clear but item not in database – choose manually")
+                    st.warning("Detected item not in list – choose manually")
             else:
-                st.warning("Photo not clear enough for auto-selection (confidence < 90%) – please choose item manually")
+                # Low confidence: no auto-select, clear message
+                st.warning("Photo not clear – please choose item manually")
+
         except Exception as e:
-            st.error("Error processing photo – please try again")
+            st.warning("Photo not clear – please choose item manually")
 
     selected_idx = st.selectbox(
         "Confirm or choose item",
