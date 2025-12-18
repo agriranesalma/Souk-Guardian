@@ -25,20 +25,19 @@ st.markdown("""
         text-align: center;
         background: linear-gradient(to right,
             #e31e24 0%,
-            #ff4444 15%,
-            #ffffff 35%,
-            #ffffff 65%,
-            #00aa00 85%,
+            #e31e24 35%,   
+            #ffffff 45%,   
+            #ffffff 55%,
+            #006400 65%,   
             #006400 100%
         );
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
-        text-shadow: 0 0 60px rgba(255,255,255,0.3), 0 0 100px rgba(227,30,36,0.2);
+        text-shadow: 0 0 60px rgba(255,255,255,0.3);
         letter-spacing: 12px;
         margin: 2rem 0 1rem 0;
         line-height: 1.2;
-        animation: gentleGlow 4s ease-in-out infinite alternate;
     }
     
     @keyframes gentleGlow {
