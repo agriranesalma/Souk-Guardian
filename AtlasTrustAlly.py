@@ -182,8 +182,8 @@ with tab1:
         color="#e67e22",  # Orange chaleureux
         fill=True,
         fill_opacity=0.7,
-        popup="Medina of Rabat",
-        tooltip="<div style='font-size: 14px; width: 220px;'><b>Medina of Rabat</b><br>The historic heart of souk culture – vibrant stalls, traditional crafts, spices, and the authentic Moroccan experience full of life and colors.</div>"
+        popup="<b>Medina of Rabat</b><br>Vibrant historic souk",
+        tooltip="<b>Medina of Rabat</b><br> – full of colors, crafts, spices and lively atmosphere"
     ).add_to(m_souk)
 
     # Circle 2: Agdal / Modern districts – contemporary souk vibe
