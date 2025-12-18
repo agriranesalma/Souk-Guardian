@@ -51,6 +51,7 @@ st.markdown("""
 
 st.markdown("<h1>Atlas Trust Ally</h1>", unsafe_allow_html=True)
 st.markdown("<div class='tag'>Souks + Taxis → Get the Fair Price in Rabat</div>", unsafe_allow_html=True)
+st.caption("No personal data collected – photos processed on-device and deleted instantly. Your Privacy first ❤️")
 
 tab1, tab2 = st.tabs(["Souk   Ally", "Taxi   Ally"])
 
