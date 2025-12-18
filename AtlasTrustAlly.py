@@ -59,12 +59,44 @@ with tab1:
     st.markdown("### Souk Bargain Helper – Never Overpay in the Medina")
 
     data = {
-        "item_en": ["Copper lantern", "Tajine pot", "Argan oil 100ml", "Handwoven scarf",
-                    "Ceramic plate", "Silver teapot", "Leather bag", "Spice mix 100g", "Small rug 1x1m"],
-        "item_ar": ["فانوس نحاسي", "طاجين فخار", "زيت أركان 100مل", "شال منسوج",
-                    "طبق سيراميك", "تايبوت فضي", "حقيبة جلدية", "توابل 100غ", "زربية صغيرة 1×1م"],
-        "min_price": [120, 80, 150, 70, 50, 300, 250, 30, 800],
-        "max_price": [220, 180, 280, 150, 120, 600, 550, 80, 1800]
+        "item_en": [
+            "Babouches",
+            "Atay cup",
+            "Saffron (20g)",
+            "Leather wallet",
+            "Leather shoes",
+            "Leather bag",
+            "Big tajine pot",
+            "Small tajine pot",
+            "Teapot",
+            "Household keyholder",
+            "Reed mat",
+            "Jellaba",
+            "Jabador",
+            "Ceramic pot",
+            "Ceramic vase (medium)",
+            "Ceramic plate"
+        ],
+        "item_ar": [
+            "بابوش",
+            "كاس أتاي",
+            "زعفران (20غ)",
+            "محفظة جلدية",
+            "أحذية جلدية",
+            "حقيبة جلدية",
+            "طاجين كبير",
+            "طاجين صغير",
+            "براد شاي",
+            "حامل مفاتيح منزلي",
+            "حصيرة قصب",
+            "جلابة",
+            "جبادور",
+            "قدر فخاري",
+            "فازة فخارية (متوسطة)",
+            "طبق فخاري"
+        ],
+        "min_price": [80, 15, 400, 150, 200, 300, 150, 80, 150, 50, 100, 300, 350, 80, 100, 40],
+        "max_price": [250, 50, 800, 400, 500, 800, 400, 200, 400, 150, 300, 800, 900, 250, 300, 120]
     }
     df = pd.DataFrame(data)
     darija_lines = [
