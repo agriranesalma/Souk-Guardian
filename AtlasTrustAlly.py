@@ -7,7 +7,7 @@ import tensorflow as tf
 import numpy as np
 import math
 
-st.set_page_config(page_title="Atlas Trust Ally", page_icon="🇲🇦", layout="centered")
+st.set_page_config(page_title="Atlas Trust", page_icon="🇲🇦", layout="centered")
 
 st.markdown("""
 <style>
@@ -89,7 +89,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 
-st.markdown('<h1 class="premium-title">Atlas Trust Ally</h1>', unsafe_allow_html=True)
+st.markdown('<h1 class="premium-title">Atlas Trust</h1>', unsafe_allow_html=True)
 
 
 st.markdown("<div class='tag'>Souks + Taxis → Get the Fair Price in Rabat</div>", unsafe_allow_html=True)
@@ -102,7 +102,7 @@ tab1, tab2 = st.tabs(["🛍️ Souk Ally", "🚕 Taxi Ally"])
 
 # ========================= SOUK TAB =========================
 with tab1:
-    st.markdown("### Souk Bargain Helper – Never Overpay in the Medina")
+    st.markdown("### Souk Helper – Never Overpay in the Medina")
 
     data = {
         "item_en": [
@@ -135,8 +135,10 @@ with tab1:
         "max_price": [250, 35, 800, 250, 500, 400, 55, 280, 150, 300, 399]
     }
     df = pd.DataFrame(data)
-    darija_lines = [
-        "هاد الثمن للسياح فقط؟ غالي بزاف!"
+    english_lines = [
+        "had taman dial souyah, bzaf",
+        "taman rali chwiya",
+        "khoya nqes chi chwiya"
     ]
 
     @st.cache_resource
@@ -226,7 +228,7 @@ with tab1:
             st.warning(f"A bit high… bargain down to {item['max_price']} DH")
         else:
             st.error(f"TOO EXPENSIVE! Fair range: {item['min_price']}–{item['max_price']} DH")
-            st.info("Say in Darija → " + darija_lines[price % len(darija_lines)])
+            st.info("Say this → " + english_lines[price % len(english_lines)])
 
         if price > item["max_price"]:
             savings = price - item["max_price"]
@@ -442,4 +444,4 @@ with tab2:
             st.session_state.taxi_points = {"depart": None, "arrival": None}
             st.rerun()
 st.markdown("---")
-st.caption("Atlas Trust Ally © 2030 – Your shield against possible overpricing in Rabat's souks and taxis 🇲🇦")
+st.caption("Atlas Trust © 2030 – Your shield against possible overpricing in Rabat's souks and taxis 🇲🇦")
