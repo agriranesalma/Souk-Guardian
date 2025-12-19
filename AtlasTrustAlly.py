@@ -105,18 +105,15 @@ with tab1:
     st.markdown("### Souk Bargain Helper – Never Overpay in the Medina")
 
     data = {
-        "item_en": [
-            "Leather bag",
-            "Tajine pot",
-        ],
-        "item_ar": [
-            "حقيبة جلدية",
-            "طاجين صغير",
-        ],
-        "min_price": [80, 15],
-        "max_price": [250, 35]
+    "item_en": ["Copper lantern", "Tajine pot", "Argan oil 100ml", "Handwoven scarf",
+                "Ceramic plate", "Silver teapot", "Leather bag", "Spice mix 100g", "Small rug 1x1m"],
+    "item_ar": ["فانوس نحاسي", "طاجين فخار", "زيت أركان 100مل", "شال منسوج",
+                "طبق سيراميك", "تايبوت فضي", "حقيبة جلدية", "توابل 100غ", "زربية صغيرة 1×1م"],
+    "min_price": [120, 80, 150, 70, 50, 300, 250, 30, 800],
+    "max_price": [220, 180, 280, 150, 120, 600, 550, 80, 1800]
     }
     df = pd.DataFrame(data)
+
     darija_lines = [
         "هاد الثمن للسياح فقط؟ غالي بزاف!"
     ]
@@ -134,38 +131,14 @@ with tab1:
 
     def predict_item(img_pil):
         img = img_pil.convert("RGB").resize((224, 224))
-    
+        input_array = np.expand_dims(np.array(img, dtype=np.float32) / 255.0, axis=0)
         input_details = interpreter.get_input_details()
         output_details = interpreter.get_output_details()
-        print(interpreter.get_input_details())
-        print(interpreter.get_output_details())
-    
-        if input_details[0]["dtype"] == np.uint8:
-            input_array = np.expand_dims(np.array(img, dtype=np.uint8), axis=0)
-        else:
-            input_array = np.expand_dims(
-                np.array(img, dtype=np.float32) / 255.0,
-                axis=0
-            )
-    
         interpreter.set_tensor(input_details[0]["index"], input_array)
         interpreter.invoke()
-    
-        output = interpreter.get_tensor(output_details[0]["index"])[0]
-    
-        if output_details[0]["dtype"] == np.uint8:
-            scale, zero_point = output_details[0]["quantization"]
-            output = scale * (output.astype(np.float32) - zero_point)
-    
-        exp = np.exp(output - np.max(output))
-        probs = exp / exp.sum()
-    
-        idx = int(np.argmax(probs))
-        confidence = float(probs[idx])
-
-        if idx >= len(labels):
-            return "UNKNOWN", confidence
-        return labels[idx], confidence
+        predictions = interpreter.get_tensor(output_details[0]["index"])[0]
+        idx = np.argmax(predictions)
+        return labels[idx], float(predictions[idx])
 
 
 
@@ -186,25 +159,25 @@ with tab1:
 
         if photo_to_use:
             try:
-                img = Image.open(photo_to_use)
-                name, conf = predict_item(img)
-                if name in df["item_en"].values:
-                    default_idx = df.index[df["item_en"] == name][0]
-                if conf < 0.2:
-                    st.warning(f"Low confidence ({conf:.1%}) – please confirm manually")
-                else:
-                    st.success(f"Detected → {name} ({conf:.1%})")
+                name, conf = predict_item(Image.open(photo_to_use))
+                st.success(f"I predict → **{name}** ({conf:.1%})")
+    
+                if conf >= 0.70: 
+                    clean_name = " ".join([w for w in name.split() if not w.isdigit()]).strip()
+                    match = df[df["item_en"].str.contains(clean_name.split()[0], case=False, regex=False)]
+                    if not match.empty:
+                        default_idx = int(match.index[0])
+                        st.info("Artical not autoselected")
+        except:
+            pass
 
-        
-            except Exception as e:
-                st.error("AI ERROR (this is NOT a photo clarity issue)")
-                st.code(str(e))
-
-            selected_idx = st.selectbox(
-                "Confirm or choose item",
-                options=df.index.tolist(),
-                index=default_idx,
-                format_func=lambda x: f"{df.loc[x, 'item_en']} – {df.loc[x, 'item_ar']}")
+  
+        selected_idx = st.selectbox(
+        "Article (auto-sélectionné si photo claire)",
+        options=range(len(df)),
+        index=default_idx,
+        format_func=lambda x: f"{df.iloc[x]['item_en']} – {df.iloc[x]['item_ar']}"
+        )
 
     if st.button("Check Price!", type="primary"):
         if not price_input or not price_input.isdigit():
