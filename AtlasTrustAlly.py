@@ -177,21 +177,13 @@ with tab1:
 
         if photo_to_use:
             try:
-                name, conf = predict_item(Image.open(photo_to_use))
-
-                if conf >= 0.81:
-                    st.success(f"Detected → **{name}** ({conf:.1%} confidence)")
-                    clean_name = " ".join([w for w in name.split() if not w.isdigit()]).strip()
-                    match = df[df["item_en"].str.contains(clean_name.split()[0], case=False, regex=False)]
-                    if not match.empty:
-                        default_idx = int(match.index[0])
-                        st.info("Item auto-selected")
-                    else:
-                        st.warning("Detected item not in list – choose manually")
-                else:
-                    st.warning("Photo not clear – please choose item manually")
-            except:
-                st.warning("Photo not clear – please choose item manually")
+                img = Image.open(photo_to_use)
+                name, conf = predict_item(img)
+                st.success(f"Detected → {name} ({conf:.1%})")
+        
+            except Exception as e:
+                st.error("AI ERROR (this is NOT a photo clarity issue)")
+                st.code(str(e))
 
         selected_idx = st.selectbox(
             "Confirm or choose item",
