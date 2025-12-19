@@ -160,10 +160,12 @@ with tab1:
         exp = np.exp(output - np.max(output))
         probs = exp / exp.sum()
     
-        idx = np.argmax(probs)
-        confidence = probs[idx]
-    
-        return labels[idx], float(confidence)
+        idx = int(np.argmax(probs))
+        confidence = float(probs[idx])
+
+        if idx >= len(labels):
+            return "UNKNOWN", confidence
+        return labels[idx], confidence
 
 
 
