@@ -194,8 +194,6 @@ with tab1:
         fill=True,
         fill_opacity=0.7,
         popup="Agdal & Modern Districts",
-        tooltip="<div style='font-size: 14px; width: 220px;'><b>Agdal & Modern Districts</b><br>Contemporary souks and artisan boutiques – blend of tradition and modernity, perfect for unique finds in a relaxed atmosphere.</div>"
-        popup="<b>Agdal District</b><br>Modern souks and artisan shops – blend of tradition and contemporary style",
         tooltip="<b>Agdal District</b><br>relaxed atmosphere and unique finds"
     ).add_to(m_souk)
 
@@ -208,8 +206,6 @@ with tab1:
         fill_opacity=0.7,
         popup="Hay Riad District",
         tooltip="<div style='font-size: 14px; width: 220px;'><b>Hay Riad District</b><br>Upscale artisan shops and galleries – high-quality crafts, leather goods, and modern Moroccan design in a calm setting.</div>"
-        popup="<b>Hay Riad District</b><br>Upscale artisan boutiques",
-        tooltip="<b>Hay Riad</b><br>Upscale artisan shops and galleries"
     ).add_to(m_souk)
 
     st_folium(m_souk, width=700, height=400, key="souk_map")
