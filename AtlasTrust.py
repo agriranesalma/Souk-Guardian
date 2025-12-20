@@ -138,7 +138,7 @@ with tab1:
     english_lines = [
         "had taman dial souyah, bzaf",
         "taman rali chwiya",
-        "khoya nqes chi chwiya"
+        "afak nqes chi chwiya"
     ]
 
     @st.cache_resource
